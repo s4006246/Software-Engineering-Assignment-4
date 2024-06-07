@@ -8,16 +8,21 @@ public class Post {
     private String postTitle;
     private String postBody;
     private String[] postTags;
-    private String[] postTypes = {"Very Difficult", "Difficult", "Easy"};
-    private String[] postEmergency = {"Immediately Needed", "Highly Needed", "Ordinary"};
+    private String postType;
+    private String postEmergency;
     private ArrayList<String> postComments = new ArrayList<>();
 
+    private static final String[] postTypes = {"Very Difficult", "Difficult", "Easy"};
+    private static final String[] postEmergencies = {"Immediately Needed", "Highly Needed", "Ordinary"};
+
     // addPost Function
-    public boolean addPost(int postID, String postTitle, String postBody, String[] postTags) {
+    public boolean addPost(int postID, String postTitle, String postBody, String[] postTags, String postType, String postEmergency) {
         this.postID = postID;
         this.postTitle = postTitle;
         this.postBody = postBody;
         this.postTags = postTags;
+        this.postType = postType;
+        this.postEmergency = postEmergency;
 
         // Condition 1
         if (postTitle.length() < 10 || postTitle.length() > 250 || !postTitle.substring(0, 5).matches("[a-zA-Z]+")) {
@@ -40,16 +45,16 @@ public class Post {
         }
 
         // Condition 4
-        if (Arrays.equals(postTypes, new String[]{"Easy"}) && postTags.length > 3) {
+        if (postType.equals("Easy") && postTags.length > 3) {
             return false;
-        } else if ((Arrays.equals(postTypes, new String[]{"Very Difficult"}) || Arrays.equals(postTypes, new String[]{"Difficult"})) && postBody.length() < 300) {
+        } else if ((postType.equals("Very Difficult") || postType.equals("Difficult")) && postBody.length() < 300) {
             return false;
         }
 
         // Condition 5
-        if (Arrays.equals(postTypes, new String[]{"Easy"}) && (Arrays.equals(postEmergency, new String[]{"Immediately Needed"}) || Arrays.equals(postEmergency, new String[]{"Highly Needed"}))) {
+        if (postType.equals("Easy") && (postEmergency.equals("Immediately Needed") || postEmergency.equals("Highly Needed"))) {
             return false;
-        } else if ((Arrays.equals(postTypes, new String[]{"Very Difficult"}) || Arrays.equals(postTypes, new String[]{"Difficult"})) && Arrays.equals(postEmergency, new String[]{"Ordinary"})) {
+        } else if ((postType.equals("Very Difficult") || postType.equals("Difficult")) && postEmergency.equals("Ordinary")) {
             return false;
         }
 
@@ -63,8 +68,8 @@ public class Post {
                 writer.write(tag + " ");
             }
             writer.write("\n");
-            writer.write("Type: " + Arrays.toString(postTypes) + "\n");
-            writer.write("Emergency: " + Arrays.toString(postEmergency) + "\n");
+            writer.write("Type: " + postType + "\n");
+            writer.write("Emergency: " + postEmergency + "\n");
             writer.write("Comments: " + postComments + "\n");
             writer.write("\n");
         } catch (IOException e) {
@@ -84,7 +89,7 @@ public class Post {
         }
 
         // Condition 2
-        if ((Arrays.equals(postTypes, new String[]{"Easy"}) || Arrays.equals(postEmergency, new String[]{"Ordinary"})) && postComments.size() >= 3) {
+        if ((postType.equals("Easy") || postEmergency.equals("Ordinary")) && postComments.size() >= 3) {
             return false;
         }
         if (postComments.size() >= 5) {
