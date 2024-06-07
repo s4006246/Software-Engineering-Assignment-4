@@ -24,7 +24,7 @@ public class PostTest {
         assertFalse(post.addPost(3, "Computer Technology", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.", new String[]{"computer"}, "Very Difficult", "Highly Needed"));
 
         // Test Data 2
-        assertFalse(post.addPost(4, "AI Machine Learning", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.", new String[]{"AI", "Machine", "Learning", "PC", "Test", "Help"}, "Easy", "Ordinary"));
+        assertFalse(post.addPost(4, "AI Machine Learning", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.", new String[]{"ai", "machine", "learning", "pc", "test", "help"}, "Easy", "Ordinary"));
     }
 
     @Test
@@ -32,10 +32,10 @@ public class PostTest {
         Post post = new Post();
 
         // Test Data 1 (Invalid)
-        assertFalse(post.addPost(5, "Computers Help", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.", new String[]{"Computer", "Help"}, "Easy", "Ordinary"));
+        assertFalse(post.addPost(5, "Computers Help", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.", new String[]{"computer", "help", "easy", "sad"}, "Easy", "Ordinary"));
 
         // Test Data 2
-        assertFalse(post.addPost(6, "Computer Testing", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.", new String[]{"Computer", "Help", "Test-1", "Tech"}, "Difficult", "Ordinary"));
+        assertFalse(post.addPost(6, "Computer Testing", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.", new String[]{"Computer", "Help", "Test", "Tech"}, "Difficult", "Highly Needed"));
     }
 
 
@@ -72,6 +72,6 @@ public class PostTest {
         assertFalse(post.addComment("i don’t know how to code"));
 
         // Test Data 2
-        assertFalse(post.addComment("coding is fun but difficult"));
+        assertFalse(post.addComment("coding is Fun but difficult"));
     }
 }
