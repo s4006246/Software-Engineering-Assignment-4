@@ -13,7 +13,7 @@ public class PostTest {
         assertFalse(post.addPost(1, "Testing", "Testing the functionality of a function", new String[]{"testing", "function"}, "Easy", "Ordinary"));
 
         // Test Data 2
-        assertFalse(post.addPost(2, "Race", "#Who wants to do a coding race competition", new String[]{"race", "code"}, "Difficult", "Highly Needed"));
+        assertFalse(post.addPost(2, "#Race", "Who wants to do a coding race competition", new String[]{"race", "code"}, "Difficult", "Highly Needed"));
     }
 
     @Test
